@@ -9,7 +9,21 @@ const result = excelToJson({
     },
     sheets: ['test'],
     columnToKey: {
-        '*': '{{columnHeader}}'
+        A: 'Base Course Type',
+        B: 'ISBN',
+        C: 'Course name',
+        D: 'Other format 1 ISBN',
+        E: 'Other format 1 Type',
+        F: 'Other format 2 ISBN',
+        G: 'Other format 2 Type',
+        H: 'Other format 3 ISBN',
+        I: 'Other format 3 Type',
+        J: 'Upsell in-app purchase ISBN',
+        K: 'Upsell course name',
+        N: 'Upsell2 in-app purchase ISBN',
+        O: 'Upsell2 course name',
+        R: 'Upgrade in-app purchase ISBN',
+        S: 'Upgrade course name'
     }
 });
 
