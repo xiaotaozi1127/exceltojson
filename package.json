@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "convert-excel-to-json": "^1.4.0",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "read-excel-file": "^2.0.6"
   }
 }
