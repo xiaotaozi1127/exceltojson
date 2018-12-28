@@ -19,7 +19,7 @@ const result = excelToJson({
     },
     sheets: ['test'],
     columnToKey: {
-        A: 'ISBN13',
+        A: '**',
         B: 'In App Display Name',
         C: 'In App Description'
     }
@@ -28,8 +28,8 @@ const result = excelToJson({
 // let output = [];
 
 result.test.forEach(item => {
-    if(!item['ISBN13']){
-		item['ISBN13'] = ''
+    if(!item['**']){
+		item['**'] = ''
 	}
 	if(!item['In App Display Name']){
 		item['In App Display Name'] = ''
