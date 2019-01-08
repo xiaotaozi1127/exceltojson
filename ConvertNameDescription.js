@@ -1,14 +1,14 @@
 const excelToJson = require('convert-excel-to-json');
 const fs = require('fs');
 var old = JSON.parse(fs.readFileSync('name-description-old.json', 'utf8'));
-// var unique = [];
-// old.forEach(element => {
-//     if(!unique.includes(element['ISBN13'])){
-//         unique.push(element['ISBN13']);
-//     }
-// });
+var unique = [];
+old.forEach(element => {
+    if(!unique.includes(element)){
+        unique.push(element);
+    }
+});
 console.log('old length', old.length);
-// console.log('unique length', unique.length);
+console.log('unique length', unique.length);
 
  
 const result = excelToJson({
@@ -19,17 +19,15 @@ const result = excelToJson({
     },
     sheets: ['test'],
     columnToKey: {
-        A: '**',
+        A: 'ISBN13',
         B: 'In App Display Name',
         C: 'In App Description'
     }
 });
 
-// let output = [];
-
 result.test.forEach(item => {
-    if(!item['**']){
-		item['**'] = ''
+    if(!item['ISBN13']){
+		item['ISBN13'] = ''
 	}
 	if(!item['In App Display Name']){
 		item['In App Display Name'] = ''
@@ -37,14 +35,14 @@ result.test.forEach(item => {
 	if(!item['In App Description']){
 		item['In App Description'] = ''
     }
-    if(!old.includes(item)){
-        old.push(item);
+    if(!unique.includes(item)){
+        unique.push(item);
     }
 })
 
-console.log('final length', old.length);
+console.log('final length', unique.length);
 
-var json = JSON.stringify(old);
+var json = JSON.stringify(unique);
 fs.writeFile ("name-description.json", json, function(err) {
     if (err) throw err;
     console.log('complete');

@@ -2,7 +2,7 @@ const excelToJson = require('convert-excel-to-json');
 const fs = require('fs');
  
 const result = excelToJson({
-    sourceFile: 'sample.xlsx',
+    sourceFile: 'ISBN-Mapping.xlsx',
     header:{
         // Is the number of rows that will be skipped and will not be present at our result object. Counting from top to bottom
         rows: 1 // 2, 3, 4, etc.
@@ -78,9 +78,10 @@ result.test.forEach(item => {
 	output.push(item);
 })
 
+console.log(output.length);
 
 var json = JSON.stringify(output);
-fs.writeFile ("input.json", json, function(err) {
+fs.writeFile ("isbn-mapping.json", json, function(err) {
     if (err) throw err;
     console.log('complete');
     }
