@@ -81,7 +81,7 @@ result.test.forEach(item => {
 console.log(output.length);
 
 var json = JSON.stringify(output);
-fs.writeFile ("isbn-mapping.json", json, function(err) {
+fs.writeFile ("purchase-mapping.json", json, function(err) {
     if (err) throw err;
     console.log('complete');
     }
