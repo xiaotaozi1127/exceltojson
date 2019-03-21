@@ -2,9 +2,9 @@ const excelToJson = require('convert-excel-to-json');
 const fs = require('fs');
  
 const result = excelToJson({
-    sourceFile: 'upsell-format-mapping.xlsx',
+    sourceFile: 'purchase-format-mapping.xlsx',
 	sheets:[{
-		name: 'Upsell map',
+		name: 'Purchase map',
 		header:{
             rows: 1
         },
@@ -37,10 +37,10 @@ const result = excelToJson({
     }]
 });
 
-let upsell_map_output = [];
+let purchase_map_output = [];
 let format_map_output = [];
 
-result["Upsell map"].forEach(item => {
+result["Purchase map"].forEach(item => {
 	if(!item['Base Course Type']){
 		item['Base Course Type'] = ''
 	}
@@ -68,10 +68,10 @@ result["Upsell map"].forEach(item => {
 	if(!item['Upgrade course name']){
 		item['Upgrade course name'] = ''
 	}
-	upsell_map_output.push(item);
+	purchase_map_output.push(item);
 })
 
-console.log('upsell_map_output length', upsell_map_output.length);
+console.log('purchase_map_output length', purchase_map_output.length);
 
 result["Format map"].forEach(item => {
 	if(!item['Base Course Type']){
@@ -100,8 +100,9 @@ result["Format map"].forEach(item => {
 	}
 	format_map_output.push(item);
 })
+console.log('format_map_output length', format_map_output.length);
 
-upsell_map_output.forEach((item) => {
+purchase_map_output.forEach((item) => {
 	let isbn = item['ISBN'];
 	let searchItem = format_map_output.find(search => search['ISBN'] == isbn);
 	if(searchItem){
@@ -115,12 +116,10 @@ upsell_map_output.forEach((item) => {
 	}
 })
 
-console.log('format_map_output length', format_map_output.length);
-
-var upsell_mapping_json = JSON.stringify(upsell_map_output);
-fs.writeFile ("upsell-mapping.json", upsell_mapping_json, function(err) {
+var purchase_mapping_json = JSON.stringify(purchase_map_output);
+fs.writeFile ("purchase-mapping.json", purchase_mapping_json, function(err) {
     if (err) throw err;
-    console.log('convert upsell-mapping complete');
+    console.log('convert purchase-mapping complete');
     }
 );
 

@@ -2,6 +2,10 @@
 
 This is a small tool which used to convert to excel to json.
 
+## Convert format mapping and upsell mapping from one excel file
+Suppose there is an excel file named as 'purchase-format-mapping.xlsx' which contains two sheets: 'Purchase map' and 'Format map', we want to convert the two sheet data as two json files.
+please run `node Convert-Purchase-Format-Mapping.js` you can get purchase-mapping.json and format-mapping.json
+
 ## ConvertISBNMapping 
 If you want to convert ISBN-Mapping.xlsx to purchase-mapping.json. please prepare ISBN-Mapping.xlsx which only contains a sheet which name is called 'test'. Please note that: ISBN-Mapping.xlsx should contain all the items rather than some updated items. We need some columns which are the same as follows:
         A: 'Base Course Type',
